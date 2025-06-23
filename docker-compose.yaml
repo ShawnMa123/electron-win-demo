@@ -1,0 +1,33 @@
+# /home/electron-win-demo/docker-compose.yml
+services:
+  electron-builder:
+    image: electronuserland/builder:wine
+    volumes:
+      - ./:/project
+      - ~/.cache/electron:/root/.cache/electron
+      # - ~/.cache/electron-builder:/root/.cache/electron-builder # 保持注释
+    working_dir: /project
+    environment:
+      # 这个环境变量应该会被 electron-builder 进程直接读取
+      ELECTRON_BUILDER_CACHE: "/tmp/eb_build_cache" # 使用一个固定的、干净的临时路径
+      ELECTRON_BUILDER_USE_CACHE: "false"          # 尝试通过这个环境变量禁用缓存
+    command:
+      # 我们不再需要在 command 中手动创建目录或 echo 缓存变量，
+      # 因为 electron-builder 应该自己处理 ELECTRON_BUILDER_CACHE。
+      # 并且 ELECTRON_BUILDER_USE_CACHE=false 应该告诉它不要使用缓存。
+      # 直接运行 npm install 和 npm run build
+      - /bin/bash
+      - -c
+      - | # 使用 YAML 的字面块风格（literal block style）来写多行命令，更清晰
+        set -e # 如果任何命令失败，则立即退出
+        echo "Node/NPM versions:"
+        node -v
+        npm -v
+        echo "Environment variables relevant to electron-builder:"
+        echo "ELECTRON_BUILDER_CACHE=$ELECTRON_BUILDER_CACHE"
+        echo "ELECTRON_BUILDER_USE_CACHE=$ELECTRON_BUILDER_USE_CACHE"
+        echo "Running npm install..."
+        npm install
+        echo "Running npm run build..."
+        npm run build
+    tty: true

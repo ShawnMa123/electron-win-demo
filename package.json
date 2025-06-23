@@ -1,0 +1,53 @@
+{
+  "name": "electron-win-demo",
+  "version": "1.0.1",
+  "description": "An Electron application with a calculator for Windows.",
+  "main": "src/main.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder --win --x64", 
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder --win --x64"
+  },
+  "keywords": [
+    "Electron",
+    "demo",
+    "calculator",
+    "windows"
+  ],
+  "author": "Your Name",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^25.0.0",
+    "electron-builder": "^24.0.0"
+  },
+  "dependencies": {},
+  "build": {
+    "appId": "com.example.electronwindemo",
+    "productName": "Electron Win Demo Calculator",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "src/**/*",
+      "node_modules/**/*",
+      "package.json"
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ]
+    },
+    "linux": null,
+    "mac": null,
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
+    }
+  }
+}

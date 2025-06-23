@@ -1,3 +1,5 @@
+# /home/electron-win-demo/.gitignore
+
 # Logs
 logs
 *.log
@@ -26,7 +28,7 @@ coverage
 # nyc test coverage
 .nyc_output
 
-# Grunt intermediate storage (https://gruntjs.com/creating-plugins#storing-task-files)
+# Grunt intermediate storage (https://gruntjs.com/creating-plugins#storing-intermediate-files)
 .grunt
 
 # Bower dependency directory (https://bower.io/)
@@ -54,9 +56,6 @@ web_modules/
 # Optional eslint cache
 .eslintcache
 
-# Optional stylelint cache
-.stylelintcache
-
 # Microbundle cache
 .rpt2_cache/
 .rts2_cache_cjs/
@@ -70,16 +69,15 @@ web_modules/
 *.tgz
 
 # Yarn Integrity file
-.yarn-integrity
+.yarnclean
 
-# dotenv environment variable files
+# dotenv environment variables file
 .env
-.env.development.local
-.env.test.local
-.env.production.local
-.env.local
+.env.test
+.env.production
+.env*.local
 
-# parcel-bundler cache (https://parceljs.org/)
+# parcel-bundler cache files
 .cache
 .parcel-cache
 
@@ -87,7 +85,7 @@ web_modules/
 .next
 out
 
-# Nuxt.js build / generate output
+# Nuxt.js build output
 .nuxt
 dist
 
@@ -99,19 +97,6 @@ dist
 
 # vuepress build output
 .vuepress/dist
-
-# vuepress v2.x temp and cache directory
-.temp
-.cache
-
-# vitepress build output
-**/.vitepress/dist
-
-# vitepress cache directory
-**/.vitepress/cache
-
-# Docusaurus cache and generated files
-.docusaurus
 
 # Serverless directories
 .serverless/
@@ -128,9 +113,62 @@ dist
 # Stores VSCode versions used for testing VSCode extensions
 .vscode-test
 
-# yarn v2
-.yarn/cache
-.yarn/unplugged
-.yarn/build-state.yml
-.yarn/install-state.gz
-.pnp.*
+# Electron-builder output
+# Comment out if you want to commit your build artifacts
+dist/
+release/
+build/ # If you have a top-level build folder for icons etc. that should be committed, be more specific.
+# For example, if your installers are in dist/
+# !dist/*.exe
+# !dist/*.dmg
+# !dist/*.AppImage
+# !dist/*.snap
+# !dist/*.deb
+# !dist/*.rpm
+# !dist/*.blockmap
+# !dist/*.yml
+# !dist/latest*.yml
+
+# Electron user data
+*.app # macOS application bundle
+# You might want to be more specific if you have other .app folders
+# For example, to ignore only Electron's output:
+# /dist/*/*.app
+
+# Windows specific
+# Thumbs.db
+# ehthumbs.db
+# Desktop.ini
+# $RECYCLE.BIN/
+
+# macOS specific
+# .DS_Store
+# .AppleDouble
+# .LSOverride
+# .Spotlight-V100
+# .Trashes
+# __MACOSX
+
+# IDE specific
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Docker cache (if stored in project)
+.docker/
+docker-compose.override.yml # Often contains local overrides
+
+# Temp files
+*.tmp
+*~
+
+# Local Electron and Electron Builder cache (though usually in ~/.cache)
+.electron/
+.electron-builder/
+
+# Debug configs if they contain sensitive info
+builder-debug.yml
+builder-effective-config.yaml

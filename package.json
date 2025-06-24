@@ -36,7 +36,7 @@
       "package.json"
     ],
     "win": {
-      "target": [ 
+      "target": [
         {
           "target": "nsis",
           "arch": [
@@ -46,7 +46,7 @@
         {
           "target": "portable",
           "arch": [
-            "x64" 
+            "x64"
           ]
         }
       ]

@@ -4,10 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <title>Electron Calculator</title>
-    <!-- 引入样式表 -->
     <link rel="stylesheet" href="style.css">
-    <!-- CSP策略，根据你的需要调整 -->
-    <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';">
+    <!-- 调整 CSP 以适应更严格的预加载脚本和潜在的未来需求 -->
+    <!-- 'unsafe-inline' 仅用于 onclick 属性，长远看可以移除并使用 addEventListener -->
+    <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline';">
 </head>
 
 <body>
@@ -42,14 +43,9 @@
         </div>
     </div>
 
-    <!-- 
-      重要: 引入 math.js 的 UMD/browser 版本。
-      路径 ../node_modules/ 是相对于 src/index.html 而言的。
-      如果你的构建过程会将 node_modules 中的文件复制到某个 lib 目录，
-      你需要相应地调整这里的 src 路径。
-      对于简单的 Electron 项目，直接引用 node_modules 是可行的。
-    -->
-    <script src="./lib/math.min.js"></script>
+    <!-- 移除了 <script src="../node_modules/mathjs/dist/math.min.js"></script> -->
+    <!-- 也移除了 <script src="./lib/math.min.js"></script> -->
+
     <script src="renderer.js"></script>
 </body>
 

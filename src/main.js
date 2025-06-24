@@ -7,16 +7,19 @@ function createWindow() {
         width: 400,
         height: 600,
         webPreferences: {
-            preload: path.join(__dirname, 'preload.js'), // 即使我们现在没用preload做math.js，但保留它以备后用或用于其他IPC
-            nodeIntegration: false,
-            contextIsolation: true,
+            preload: path.join(__dirname, 'preload.js'), // 确保 preload.js 被加载
+            nodeIntegration: false,                      // 保持 false 以提高安全性
+            contextIsolation: true,                      // 保持 true 以提高安全性
         }
     });
 
     mainWindow.loadFile(path.join(__dirname, 'index.html'));
 
-    // 打开开发者工具 (可选)
-    // mainWindow.webContents.openDevTools();
+    // 打开开发者工具 (可选，用于调试打包后的应用)
+    // To open DevTools in the packaged app for debugging, you might need to
+    // check if it's development mode or add a flag/menu item.
+    // For now, you can uncomment it for testing builds.
+    // mainWindow.webContents.openDevTools(); 
 }
 
 app.whenReady().then(() => {
@@ -30,6 +33,3 @@ app.whenReady().then(() => {
 app.on('window-all-closed', function () {
     if (process.platform !== 'darwin') app.quit();
 });
-
-// 你可能有一个空的或者带有其他功能的 preload.js，这里假设有一个基础的或空的。
-// 如果你没有 preload.js 文件，可以将 webPreferences 中的 preload 那行注释掉。

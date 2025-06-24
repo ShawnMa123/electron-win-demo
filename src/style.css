@@ -21,35 +21,51 @@ h1 {
     padding: 20px;
     background-color: #fff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    /* 给计算器一个固定宽度，方便布局 */
 }
 
 #display {
     width: calc(100% - 22px);
     /* Account for padding/border */
-    height: 40px;
-    font-size: 24px;
+    height: 50px;
+    /* 增加显示区域高度 */
+    font-size: 28px;
+    /* 增加字体大小 */
     text-align: right;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
+    /* 增加与按钮的间距 */
     padding: 5px 10px;
     border: 1px solid #ddd;
     border-radius: 4px;
     box-sizing: border-box;
+    overflow-x: auto;
+    /* 如果内容太长，允许水平滚动 */
 }
 
 .buttons {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
+    /* 4列 */
     gap: 10px;
 }
 
 .buttons button {
-    height: 50px;
-    font-size: 18px;
+    height: 60px;
+    /* 增加按钮高度 */
+    font-size: 20px;
+    /* 增加按钮字体大小 */
     border: none;
     border-radius: 4px;
     background-color: #e0e0e0;
     cursor: pointer;
     transition: background-color 0.2s;
+    display: flex;
+    /* 用于居中按钮文字 */
+    align-items: center;
+    /* 垂直居中 */
+    justify-content: center;
+    /* 水平居中 */
 }
 
 .buttons button:hover {
@@ -62,7 +78,7 @@ h1 {
 
 .buttons button.equals {
     grid-column: span 2;
-    /* Make equals button wider */
+    /* 让等于号按钮占据两列 */
     background-color: #4CAF50;
     color: white;
 }
@@ -72,6 +88,6 @@ h1 {
 }
 
 .buttons button.zero {
-    /* grid-column: span 2; */
-    /* if you want a wider zero button */
+    /* 如果需要，可以使0按钮更宽，例如 grid-column: span 2; */
+    /* 但当前布局下，保持单列可能更好 */
 }

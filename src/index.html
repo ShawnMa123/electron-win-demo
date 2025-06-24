@@ -11,36 +11,45 @@
 </head>
 
 <body>
-    <h1>Electron 计算器</h1>
+    <h1>Electron 计算器 (增强版)</h1>
 
     <div class="calculator">
         <input type="text" id="display" readonly>
         <div class="buttons">
             <button onclick="clearDisplay()">C</button>
-            <button onclick="appendToDisplay('/')">/</button>
-            <button onclick="appendToDisplay('*')">*</button>
+            <button onclick="appendToDisplay('(')">(</button>
+            <button onclick="appendToDisplay(')')">)</button>
             <button onclick="deleteLast()">DEL</button>
 
             <button onclick="appendToDisplay('7')">7</button>
             <button onclick="appendToDisplay('8')">8</button>
             <button onclick="appendToDisplay('9')">9</button>
-            <button onclick="appendToDisplay('-')">-</button>
+            <button onclick="appendToDisplay('/')">/</button>
 
             <button onclick="appendToDisplay('4')">4</button>
             <button onclick="appendToDisplay('5')">5</button>
             <button onclick="appendToDisplay('6')">6</button>
-            <button onclick="appendToDisplay('+')">+</button>
+            <button onclick="appendToDisplay('*')">*</button>
 
             <button onclick="appendToDisplay('1')">1</button>
             <button onclick="appendToDisplay('2')">2</button>
             <button onclick="appendToDisplay('3')">3</button>
-            <button onclick="calculateResult()" class="equals">=</button>
+            <button onclick="appendToDisplay('-')">-</button>
 
             <button onclick="appendToDisplay('0')" class="zero">0</button>
             <button onclick="appendToDisplay('.')">.</button>
+            <button onclick="calculateResult()" class="equals">=</button>
         </div>
     </div>
 
+    <!-- 
+      重要: 引入 math.js 的 UMD/browser 版本。
+      路径 ../node_modules/ 是相对于 src/index.html 而言的。
+      如果你的构建过程会将 node_modules 中的文件复制到某个 lib 目录，
+      你需要相应地调整这里的 src 路径。
+      对于简单的 Electron 项目，直接引用 node_modules 是可行的。
+    -->
+    <script src="../node_modules/mathjs/dist/math.min.js"></script>
     <!-- 引入渲染进程脚本 -->
     <script src="renderer.js"></script>
 </body>

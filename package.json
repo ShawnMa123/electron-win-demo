@@ -35,6 +35,9 @@
       "node_modules/**/*",
       "package.json"
     ],
+    "asarUnpack": [
+      "**/node_modules/mathjs/**/*"
+    ],
     "win": {
       "target": [
         {
